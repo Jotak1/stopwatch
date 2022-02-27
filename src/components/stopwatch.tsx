@@ -8,6 +8,7 @@ export const Stopwatch = () => {
     font-size: 3rem;
     font-weight: bold;
     color: #000;
+    z-index: 1;
   `;
 
   return (

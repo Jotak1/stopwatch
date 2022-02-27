@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import styled from "@emotion/styled";
-import { useTimerContext } from "./TimerContext";
+import { useTimerContext } from "../hooks/TimerContext";
 
 export const Timer = () => {
   const { time } = useTimerContext();
@@ -94,10 +94,10 @@ export const Timer = () => {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    // background: grey;
+    background: #f5f5f5;
     box-shadow: 2px 2px 5px 5px #999;
     position: absolute
-    // margin: auto;
+    z-index: -10;
     margin-left: auto;
     margin-right: auto;
     position: absolute;
@@ -105,8 +105,8 @@ export const Timer = () => {
     // height: 100%;
     // font-size: 9rem;
     `;
-  return (
-    <StyleView>
+    return (
+      <StyleView>
       <StyleApp />
       <StyleSpinner>
         <StyleCircularMinute

@@ -1,6 +1,6 @@
 import React from 'react'
 import "./styles.css";
-import { useTimerContext } from './TimerContext';
+import { useTimerContext } from '../hooks/TimerContext';
 
 export const ListLaps = () => {
 

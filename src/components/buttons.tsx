@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import { Fab } from "@mui/material";
 import React, { useEffect } from "react";
-import { useTimerContext } from "./TimerContext";
+import { useTimerContext } from "../hooks/TimerContext";
 import "./styles.css";
 
 export const Buttons = () => {
-  const { isLapNotEmpty, isRunning, handleStart, handleStop, handleReset, handleLap, handleSaveLap } =
+  const { isLapNotEmpty, isRunning, handleStart, handleStop, handleReset, handleLap, handleSaveLap, handleShowUser } =
     useTimerContext();
 
 
@@ -33,9 +33,13 @@ export const Buttons = () => {
             </Fab>
           </>
         )} {
-          isLapNotEmpty && (
+          isLapNotEmpty ? (
             <Fab className="buttonFab" onClick={handleSaveLap} disabled={isRunning} >
               Save
+            </Fab>
+          ) : (
+            <Fab className="buttonFab" onClick={handleShowUser} >
+              Users
             </Fab>
           )
         }

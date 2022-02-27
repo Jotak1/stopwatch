@@ -6,11 +6,16 @@ export type TimerContextType = {
     isReset: boolean;
     lap: number[];
     isLapNotEmpty: boolean;
+    isModalOpen: boolean;
+    user: any;
     handleStart: () => void;
     handleStop: () => void;
     handleReset: () => void;
     handleLap: () => void;
     handleSaveLap: () => void;
+    handleShowUser: () => void;
+    handleCloseModal: () => void;
+
 };
 
 export const TimerContext = createContext<TimerContextType>({
@@ -19,11 +24,15 @@ export const TimerContext = createContext<TimerContextType>({
     isReset: false,
     lap: [],
     isLapNotEmpty: false,
+    isModalOpen: false,
+    user: [],
     handleStart: () => {},
     handleStop: () => {},
     handleReset: () => {},
     handleLap: () => {},
-    handleSaveLap: () => {}
+    handleSaveLap: () => {},
+    handleShowUser: () => {},
+    handleCloseModal: () => {}
 });
 
 export const useTimerContext = () => useContext(TimerContext);
