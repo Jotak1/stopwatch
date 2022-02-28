@@ -43,7 +43,7 @@ function App() {
     setIsRunning(false)
   }
 
-  
+
   const handleReset = () => {
     setTime(0)
     setIsRunning(false)
@@ -54,7 +54,7 @@ function App() {
       setIsReset(false)
     }, 100)
   }
-  
+
   const handleLap = () => {
     const tens = Math.floor(time / 10) % 10;
     const seconds = Math.floor(time / 100) % 60;
@@ -70,7 +70,7 @@ function App() {
   const handleCloseModal = () => {
     setIsModalOpen(false)
   }
-  
+
   const handleSaveLap = () => {
     Swal.fire({
       icon: 'info',
@@ -90,7 +90,7 @@ function App() {
       confirmButtonText: 'Save',
       cancelButtonText: 'Cancel'
     }).then((result) => {
-      if(result.value.length > 15){
+      if (result.value.length > 15) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -103,7 +103,7 @@ function App() {
           cancelButtonText: 'Cancel'
         })
         return
-      } 
+      }
       if (result.value.length < 3) {
         Swal.fire({
           icon: 'error',
@@ -141,8 +141,8 @@ function App() {
           )
       }
     }).catch(err => {
-      console.log(err) 
-      
+      console.log(err)
+
     })
 
   }
@@ -164,19 +164,22 @@ function App() {
       if (result.value) {
         axios.get('http://localhost:4000/api/laps/' + result.value)
           .then(res => {
-            if(res.data.data.length === 0){
+            if (res.data.data.length === 0) {
               Swal.fire(
                 'Not found!',
                 'User not found',
                 'error'
               )
-            }else{
+            } else {
               setUser(res.data.data)
               setIsModalOpen(true)
             }
-      })
-    }
-  })
+          })
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+
   }
 
 
@@ -186,7 +189,7 @@ function App() {
       <TimerContext.Provider value={{ time, isRunning, isReset, lap, isLapNotEmpty, isModalOpen, user, handleStart, handleStop, handleReset, handleLap, handleSaveLap, handleShowUser, handleCloseModal }}>
         <Stopwatch />
         <ListLaps />
-        {isModalOpen ? <ModalUser  /> : null}
+        {isModalOpen ? <ModalUser /> : null}
       </TimerContext.Provider>
     </div>
   );
